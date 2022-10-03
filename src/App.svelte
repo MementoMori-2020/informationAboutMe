@@ -8,6 +8,42 @@
   
   var pgWidth
 
+  var currentTabName = "one"
+  var currentTab
+  $: if (currentTabName == "one") {
+    currentTab = "intro"
+  } else if (currentTabName == "two") {
+    currentTab = "intern"
+  } else if (currentTabName == "three") {
+    currentTab = "jobs"
+  } else if (currentTabName == "four") {
+    currentTab = "school"
+  } else if (currentTabName == "five") {
+    currentTab = "volunteer"
+  } else if (currentTabName == "six") {
+    currentTab = "scouts"
+  } else {
+    currentTab = "intro"
+  }
+
+  var introScrollCurrent = 0
+  var internScrollCurrent = 0
+  var jobsScrollCurrent = 0
+  var schoolScrollCurrent = 0
+  var volunteerScrollCurrent = 0
+  var scoutsScrollCurrent = 0
+
+  var currentSlidesScroll
+  $: currentSlidesScroll = currentTab + "ScrollCurrent"
+
+  function scrollSlides(event) {
+    let scrollDirection = event.target.id
+    if (scrollDirection == "goLeft" && currentSlidesScroll != 0) {
+      let x = document.getElementById(currentTab)
+      
+    }
+  }
+
   function switchTab(event) {
     let viewport = document.querySelector('#slideDeck')
     let newPage = event.target.id
@@ -19,6 +55,7 @@
       viewport.className = newPage + ' ' + viewport.className
       newTab.classList.add('selected')
       oldTab.classList.remove('selected')
+      currentTabName = newPage
     }
   }
 </script>
