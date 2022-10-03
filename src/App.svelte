@@ -8,10 +8,6 @@
   
   var pgWidth
 
-  function load() {
-    let x = document.querySelector('#slideDeck')
-    x.classList.add('one')
-  }
   function switchTab(event) {
     let viewport = document.querySelector('#slideDeck')
     let newPage = event.target.id
@@ -75,31 +71,34 @@
       </div>
       <!--Make the "slideshows" scroll sideways, but scroll
           up/down between topics.-->
-      <div on:load={load} id="switchTabs">
-        <div on:click={switchTab} id="one" class="h3 left selected">
-          <h3 id="one">Introduction</h3>
-        </div>
+      <div id="switchTabs">
+        <div class="first">
+          <div on:click={switchTab} id="one" class="h3 left selected">
+            <h3 id="one">Introduction</h3>
+          </div>
 
-        <div on:click={switchTab} id="two" class="h3">
-          <h3 id="two">Internships</h3>
+          <div on:click={switchTab} id="two" class="h3">
+            <h3 id="two">Internships</h3>
+          </div>
+          
+          <div on:click={switchTab} id="three" class="h3 leftMid">
+            <h3 id="three">Employment</h3>
+          </div>
         </div>
         
-        <div on:click={switchTab} id="three" class="h3">
-          <h3 id="three">Employment</h3>
-        </div>
-        
-        <div on:click={switchTab} id="four" class="h3">
-          <h3 id="four">Education</h3>
-        </div>
-        
-        <div on:click={switchTab} id="five" class="h3">
-          <h3 id="five">Volunteering</h3>
-        </div>
+        <div class="second">
+          <div on:click={switchTab} id="four" class="h3 rightMid">
+            <h3 id="four">Education</h3>
+          </div>
+          
+          <div on:click={switchTab} id="five" class="h3">
+            <h3 id="five">Volunteering</h3>
+          </div>
 
-        <div on:click={switchTab} id="six" class="h3 right">
-          <h3 id="six">Boy Scouts</h3>
+          <div on:click={switchTab} id="six" class="h3 right">
+            <h3 id="six">Boy Scouts</h3>
+          </div>
         </div>
-        
       </div>
     </section>
     <section class="ignore one two three four five six"></section>
@@ -134,11 +133,11 @@
   #displayBox {
     Width: 80vw;
     height: 60vh;
-    border-top: 4px solid;
-    border-right: 4px solid;
-    border-left: 4px solid;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top: .47vw solid;
+    border-right: .47vw solid;
+    border-left: .47vw solid;
+    border-top-left-radius: .6vw;
+    border-top-right-radius: .6vw;
     overflow: hidden;
     z-index: 10;
   }
@@ -147,6 +146,9 @@
     transition: all 1s;
     z-index: 5;
     color: #102436;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
   section.one {
     transform: translateY(0);
@@ -166,11 +168,6 @@
   section.six {
     transform: translateY(-300vh);
   }
-  /*
-  .slideDeck:hover {
-    transform: translateY(-60vh);
-  }
-  */
 
 
 
@@ -178,7 +175,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: start;
     height: 8vh;
     margin: 0px;
     border: 0px solid;
@@ -187,40 +184,46 @@
   #switchTabs .h3 {
     margin: 0px;
     padding: 0px;
-    width: 16.66666666666666666%;
+    width: 33.333333333333333%;
     height: 8vh;
     display: flex;
     justify-content: center;
     align-items: start;
-    border-top: 4px solid;
-    border-left: 2px solid;
-    border-right: 2px solid;
-    border-bottom: 4px solid;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top: .47vw solid;
+    border-left: .235vw solid;
+    border-right: .235vw solid;
+    border-bottom: .47vw solid;
+    border-bottom-left-radius: .6vw;
+    border-bottom-right-radius: .6vw;
     transition: all .2s;
     cursor: pointer;
     z-index: 10;
   }
+  .first, .second {
+    width: 50%
+  }
   #switchTabs .selected {
     height: 10vh;
-    transform: translateY(1vh);
   }
   #switchTabs .h3:hover {
     height: 10vh;
-    transform: translateY(1vh);
   }
   #switchTabs .left {
-    border-left: 4px solid;
+    border-left: .47vw solid;
   }
   #switchTabs .right {
-    border-right: 4px solid;
+    border-right: .47vw solid;
   }
   #switchTabs h3 {
     margin: auto;
     width: 100%;
     cursor: pointer;
     color: #102436;
+  }
+  #switchTabs .first, #switchTabs .second {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
   }
   #one {
     background-color: #db9ecd;
@@ -240,6 +243,36 @@
   #six {
     background-color: #b6b4ba;
   }
+  @media screen and (max-aspect-ratio: 1/1) {
+    #switchTabs {
+      flex-direction: column;
+      height: 17vh;
+      width: 80.94vw;
+      margin: 0px;
+    }
+    #switchTabs h3 {
+      font-size: 180%;
+    }
+    #switchTabs .selected {
+      height: 8vh;
+    }
+    #switchTabs .h3:hover {
+      height: 8vh;
+    }
+    #switchTabs .first, #switchTabs .second {
+      width: 100%;
+    }
+    #switchTabs .first .h3, #switchTabs .left {
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+    #switchTabs .leftMid {
+      border-right: .47vw solid;
+    }
+    #switchTabs .rightMid {
+      border-left: .47vw solid;
+    }
+  }
 
 
 
@@ -247,7 +280,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 20vw;
+    width: 24%;
     margin-right: 2vw;
   }
   .header {
@@ -274,6 +307,16 @@
     justify-content: space-between;
     position: fixed;
     top: 0px;
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .contact {
+      width: 50%;
+      margin-right: 5vw;
+    }
+    .header {
+      font-size: 170%;
+      height: 10vh;
+    }
   }
 
   .ignore {
