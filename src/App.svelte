@@ -121,7 +121,6 @@
   */
   main {
     width: 100%;
-    background-color: #9EA7DC;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -130,14 +129,14 @@
   }
 
   #content {
-    border-bottom: 0px;
+    border: 0px;
   }
   #displayBox {
     Width: 80vw;
     height: 60vh;
-    border-top: 4px solid black;
-    border-right: 4px solid black;
-    border-left: 4px solid black;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     overflow: hidden;
@@ -147,6 +146,7 @@
     height: 100%;
     transition: all 1s;
     z-index: 5;
+    color: #102436;
   }
   section.one {
     transform: translateY(0);
@@ -181,7 +181,7 @@
     align-items: center;
     height: 8vh;
     margin: 0px;
-    border: 0px solid black;
+    border: 0px solid;
     z-index: 10;
   }
   #switchTabs .h3 {
@@ -192,10 +192,10 @@
     display: flex;
     justify-content: center;
     align-items: start;
-    border-top: 4px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 4px solid black;
+    border-top: 4px solid;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-bottom: 4px solid;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     transition: all .2s;
@@ -211,15 +211,16 @@
     transform: translateY(1vh);
   }
   #switchTabs .left {
-    border-left: 4px solid black;
+    border-left: 4px solid;
   }
   #switchTabs .right {
-    border-right: 4px solid black;
+    border-right: 4px solid;
   }
   #switchTabs h3 {
     margin: auto;
     width: 100%;
     cursor: pointer;
+    color: #102436;
   }
   #one {
     background-color: #db9ecd;
@@ -273,7 +274,6 @@
     justify-content: space-between;
     position: fixed;
     top: 0px;
-    background-color: #9EA7DC;
   }
 
   .ignore {
