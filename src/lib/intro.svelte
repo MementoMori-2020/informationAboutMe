@@ -117,12 +117,12 @@
     height: 1.5vw;
     margin: .25vw;
     margin-bottom: .5vh;
-    background-color: #a4a4a4ee;
+    background-color: #787878ee;
     border-radius: 50%;
     transition: all 1s;
   }
   .tracked {
-    background-color: #d8d8d899;
+    background-color: #d8d8d8ee;
   }
   @media screen and (max-aspect-ratio: 1/1) {
     .tracker {

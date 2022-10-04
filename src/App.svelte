@@ -168,7 +168,7 @@
     border: 0px;
   }
   #displayBox {
-    Width: 80vw;
+    width: 80vw;
     height: 60vh;
     border-top: .47vw solid;
     border-right: .47vw solid;
