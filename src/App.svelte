@@ -278,7 +278,7 @@
     background-color: #686df5;
   }
   #six {
-    background-color: #b6b4ba;
+    background-color: #dcc4a3;
   }
   @media screen and (max-aspect-ratio: 1/1) {
     #switchTabs {
@@ -299,7 +299,7 @@
     #switchTabs .first, #switchTabs .second {
       width: 100%;
     }
-    #switchTabs .first .h3, #switchTabs .left {
+    #switchTabs #one, #switchTabs #two, #switchTabs #three, #switchTabs #five{
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
     }
@@ -308,6 +308,10 @@
     }
     #switchTabs .rightMid {
       border-left: .47vw solid;
+      border-bottom-right-radius: 0px;
+    }
+    #switchTabs #six {
+      border-bottom-left-radius: 0px;
     }
   }
 

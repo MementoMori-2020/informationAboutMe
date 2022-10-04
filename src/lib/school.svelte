@@ -2,19 +2,54 @@
    
   var currentSlide = 1
   var maxSlide = 2
+  var currentTracker = "e" + currentSlide
 
   function scrollSlidesLeft() {
     if (currentSlide != 1) {
+      document.getElementById(currentTracker).classList.remove("tracked")
       currentSlide = currentSlide - 1
       let x = "translateX(" + -80*(currentSlide-1) + "vw)"
       document.getElementById("slidesBoxSchool").style.transform = x
+      currentTracker = "e" + currentSlide
+      document.getElementById(currentTracker).classList.add("tracked")
+    }
+    if (currentSlide == 1) {
+      document.getElementById("schoolLeft").style.opacity = "0"
+      document.getElementById("schoolLeft").style.pointerEvents = "none"
+    } else if (currentSlide != 1) {
+      document.getElementById("schoolLeft").style.opacity = "1"
+      document.getElementById("schoolLeft").style.pointerEvents = "all"
+    }
+    if (currentSlide == maxSlide) {
+      document.getElementById("schoolRight").style.opacity = "0"
+      document.getElementById("schoolRight").style.pointerEvents = "none"
+    } else if (currentSlide != maxSlide) {
+      document.getElementById("schoolRight").style.opacity = "1"
+      document.getElementById("schoolRight").style.pointerEvents = "all"
     }
   }
   function scrollSlidesRight() {
     if (currentSlide < maxSlide) {
+      document.getElementById(currentTracker).classList.remove("tracked")
       currentSlide = currentSlide + 1
       let x = "translateX(" + -80*(currentSlide-1) + "vw)"
       document.getElementById("slidesBoxSchool").style.transform = x
+      currentTracker = "e" + currentSlide
+      document.getElementById(currentTracker).classList.add("tracked")
+    }
+    if (currentSlide == 1) {
+      document.getElementById("schoolLeft").style.opacity = "0"
+      document.getElementById("schoolLeft").style.pointerEvents = "none"
+    } else if (currentSlide != 1) {
+      document.getElementById("schoolLeft").style.opacity = "1"
+      document.getElementById("schoolLeft").style.pointerEvents = "all"
+    }
+    if (currentSlide == maxSlide) {
+      document.getElementById("schoolRight").style.opacity = "0"
+      document.getElementById("schoolRight").style.pointerEvents = "none"
+    } else if (currentSlide != maxSlide) {
+      document.getElementById("schoolRight").style.opacity = "1"
+      document.getElementById("schoolRight").style.pointerEvents = "all"
     }
   }
 
@@ -23,10 +58,14 @@
 <div id="slides">
   <div class="scrollArrows">
     <div class="goLeft scroll">
-      <h1 on:click={scrollSlidesLeft}>&LeftTriangle;</h1>
+      <h1 id="schoolLeft" on:click={scrollSlidesLeft}>&LeftTriangle;</h1>
+    </div>
+    <div class="slideTracker">
+      <div id="e1" class="tracker tracked"></div>
+      <div id="e2" class="tracker"></div>
     </div>
     <div id="goRight" class="goRight scroll">
-      <h1 on:click={scrollSlidesRight}>&RightTriangle;</h1>
+      <h1 id="schoolRight" on:click={scrollSlidesRight}>&RightTriangle;</h1>
     </div>
   </div>
   <section id="slidesBoxSchool">
@@ -72,6 +111,31 @@
       justify-content: space-around;
       align-items: center;
     }
+    .slideTracker {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  }
+  .tracker {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: .25vw;
+    margin-bottom: .5vh;
+    background-color: #a4a4a4ee;
+    border-radius: 50%;
+    transition: all 1s;
+  }
+  .tracked {
+    background-color: #d8d8d899;
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .tracker {
+      width: 1.5vh;
+      height: 1.5vh;
+      margin: .25vh;
+    }
+  }
     .scrollArrows {
     height: 60vh;
     width: 80vw;
@@ -100,7 +164,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    pointer-events: all;
+    pointer-events: none;
+    opacity: 0;
     cursor: pointer;
     background-image: linear-gradient(to right, #00000099, #00000022);
   }
@@ -116,6 +181,14 @@
     cursor: pointer;
     background-image: linear-gradient(to left, #00000099, #00000022);
   }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .goLeft h1, .goRight h1 {
+      width: 5vh;
+    }
+  }
+  #schoolLeft, #schoolRight {
+    transition: all .5s;
+  }
   #slides {
     transition: all 1s;
     display: flex;
@@ -123,25 +196,29 @@
     justify-content: start;
   }
   #slidesBoxSchool {
+    display: flex;
+    flex-direction: row;
     transition: all 1s;
   }
-    .slide {
-      width: 80vw;
-      height: 60vh;
-      background-color: #f7576e;
-    }
-    h1 {
-      margin-bottom: 0px;
-      margin-top: 0px;
-    }
-    .left-text {
-      width: 35vw;
-    }
-    .right-img, .right-img img {
-      width: 25vw;
-      height: 25vw; 
-    }
-    @media screen and (max-aspect-ratio: 1/1) {
+  .slide {
+    width: 70vw;
+    height: 60vh;
+    background-color: #f7576e;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  h1 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .left-text {
+    width: 50%;
+  }
+  .right-img, .right-img img {
+    width: 25vw;
+    height: 25vw; 
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
     section {
       flex-direction: column;
     }
@@ -157,7 +234,7 @@
     }
     h3 {
       height: 60%;
-      width: 60%;
+      width: 80%;
       font-size: 130%;
     }
     img, .right-img {
@@ -171,5 +248,5 @@
       flex-direction: column;
       align-items: center;
     }
-  }
-  </style>
+  }  
+</style>

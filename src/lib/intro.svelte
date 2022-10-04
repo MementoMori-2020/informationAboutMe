@@ -2,19 +2,54 @@
 
   var currentSlide = 1
   var maxSlide = 2
+  var currentTracker = "i" + currentSlide
 
-  function scrollSlidesLeft() {
+  function scrollSlidesLeft(event) {
     if (currentSlide != 1) {
+      document.getElementById(currentTracker).classList.remove("tracked")
       currentSlide = currentSlide - 1
       let x = "translateX(" + -80*(currentSlide-1) + "vw)"
       document.getElementById("slidesBoxIntro").style.transform = x
+      currentTracker = "i" + currentSlide
+      document.getElementById(currentTracker).classList.add("tracked")
+    }
+    if (currentSlide == 1) {
+      document.getElementById("introLeft").style.opacity = "0"
+      document.getElementById("introLeft").style.pointerEvents = "none"
+    } else if (currentSlide != 1) {
+      document.getElementById("introLeft").style.opacity = "1"
+      document.getElementById("introLeft").style.pointerEvents = "all"
+    }
+    if (currentSlide == maxSlide) {
+      document.getElementById("introRight").style.opacity = "0"
+      document.getElementById("introRight").style.pointerEvents = "none"
+    } else if (currentSlide != maxSlide) {
+      document.getElementById("introRight").style.opacity = "1"
+      document.getElementById("introRight").style.pointerEvents = "all"
     }
   }
   function scrollSlidesRight() {
     if (currentSlide < maxSlide) {
+      document.getElementById(currentTracker).classList.remove("tracked")
       currentSlide = currentSlide + 1
       let x = "translateX(" + -80*(currentSlide-1) + "vw)"
       document.getElementById("slidesBoxIntro").style.transform = x
+      currentTracker = "i" + currentSlide
+      document.getElementById(currentTracker).classList.add("tracked")
+    }
+    if (currentSlide == 1) {
+      document.getElementById("introLeft").style.opacity = "0"
+      document.getElementById("introLeft").style.pointerEvents = "none"
+    } else if (currentSlide != 1) {
+      document.getElementById("introLeft").style.opacity = "1"
+      document.getElementById("introLeft").style.pointerEvents = "all"
+    }
+    if (currentSlide == maxSlide) {
+      document.getElementById("introRight").style.opacity = "0"
+      document.getElementById("introRight").style.pointerEvents = "none"
+    } else if (currentSlide != maxSlide) {
+      document.getElementById("introRight").style.opacity = "1"
+      document.getElementById("introRight").style.pointerEvents = "all"
     }
   }
 
@@ -23,14 +58,18 @@
 <div id="slides">
   <div class="scrollArrows">
     <div class="goLeft scroll">
-      <h1 on:click={scrollSlidesLeft}>&LeftTriangle;</h1>
+      <h1 id="introLeft" on:click={scrollSlidesLeft}>&LeftTriangle;</h1>
     </div>
-    <div id="goRight" class="goRight scroll">
-      <h1 on:click={scrollSlidesRight}>&RightTriangle;</h1>
+    <div class="slideTracker">
+      <div id="i1" class="tracker tracked"></div>
+      <div id="i2" class="tracker"></div>
+    </div>
+    <div class="goRight scroll">
+      <h1 id="introRight" on:click={scrollSlidesRight}>&RightTriangle;</h1>
     </div>
   </div>
   <section id="slidesBoxIntro">
-    <section class="slide">
+    <section id="introSlide1" class="slide">
         <div class="intro">
             <h1>Introductions</h1>
         </div>
@@ -47,7 +86,7 @@
             </h2>
         </div>
     </section>
-    <section class="slide">
+    <section id="introSlide2" class="slide">
       <div class="text">
           <h2>There will be more text here, but for now I just need a paragraph.
             Lorem ipsum si dolor amet or whatever I guess.
@@ -55,7 +94,7 @@
       </div>
       <div class="intro">
         <h1>Slide 2</h1>
-    </div>
+      </div>
     </section>
   </section>
 </div>
@@ -66,6 +105,31 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+  }
+  .slideTracker {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  }
+  .tracker {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: .25vw;
+    margin-bottom: .5vh;
+    background-color: #a4a4a4ee;
+    border-radius: 50%;
+    transition: all 1s;
+  }
+  .tracked {
+    background-color: #d8d8d899;
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .tracker {
+      width: 1.5vh;
+      height: 1.5vh;
+      margin: .25vh;
+    }
   }
   .scrollArrows {
     height: 60vh;
@@ -95,7 +159,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    pointer-events: all;
+    pointer-events: none;
+    opacity: 0;
     cursor: pointer;
     background-image: linear-gradient(to right, #00000099, #00000022);
   }
@@ -111,6 +176,14 @@
     cursor: pointer;
     background-image: linear-gradient(to left, #00000099, #00000022);
   }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .goLeft h1, .goRight h1 {
+      width: 5vh;
+    }
+  }
+  #introLeft, #introRight {
+    transition: all 1s;
+  }
   #slides {
     transition: all 1s;
     display: flex;
@@ -121,9 +194,11 @@
     transition: all 1s;
   }
   .slide {
-    width: 80vw;
+    width: 70vw;
     height: 60vh;
     background-color: #db9ecd;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
   h1 {
     display: flex;
@@ -132,14 +207,14 @@
     height: 25%;
   }
   .intro {
-    width: 34%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50%;
   }
   .text {
-    width: 45%;
+    width: 50%;
     min-height: 31.25%; 
     display: flex;
     justify-content: center;
@@ -155,7 +230,7 @@
       height: 50%;
     }
     .intro {
-      width: 90%;
+      width: 80%;
       height: 30%;
       font-size: 170%;
     }
