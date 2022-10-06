@@ -1,7 +1,7 @@
 <script>
 
   var currentSlide = 1
-  var maxSlide = 2
+  var maxSlide = 3
   var currentTracker = "i" + currentSlide
 
   function scrollSlidesLeft(event) {
@@ -63,6 +63,7 @@
     <div class="slideTracker">
       <div id="i1" class="tracker tracked"></div>
       <div id="i2" class="tracker"></div>
+      <div id="i3" class="tracker"></div>
     </div>
     <div class="goRight scroll">
       <h1 id="introRight" on:click={scrollSlidesRight}>&RightTriangle;</h1>
@@ -88,14 +89,41 @@
     </section>
     <section id="introSlide2" class="slide">
       <div class="text">
-          <h2>There will be more text here, but for now I just need a paragraph.
-            Lorem ipsum si dolor amet or whatever I guess.
+          <h2>I was born in Danbury, Connecticut and raised in
+            Chelmsford, Massachusetts. I had gone to Innovation 
+            Academy Charter School from 5th grade to 12th grade,
+            and now attend WPI as part of the class of 2026. Since 5th 
+            grade I had been an active participant in Boy Scouts,
+            and earned my Eagle Scout rank on June 25, 2022. Both of these commitments 
+            taught me interpersonal skills, leadership skills, presentation skills, 
+            and so much more. I learned what it really meant to commit to 
+            something and stick with it through scouts, and I learned how 
+            to balance many facets of life all at once from both.
           </h2>
       </div>
       <div class="intro">
-        <h1>Slide 2</h1>
+        <h1>Background</h1>
       </div>
     </section>
+    <section id="introSlide3" class="slide">
+      <div class="intro">
+          <h1>Commitment, Drive, and <br> This Site</h1>
+      </div>
+      <div class="text">
+          <h2>
+            When I set my mind to something and truly decide to complete
+            it, very little can stop me. For instance, this website. I 
+            programmed it from scratch using HTML, CSS, JavaScript, and the 
+            Svelte framework. The biggest obstacle I faced was hosting
+            the site, which took far more knowledge than I had at that 
+            moment. So I took to the web, looked for any solution I could
+            find, and eventually was able to figure out the issue and get 
+            the site up and running. It took me around a week, spending
+            anywhere from three to six hours each day, to go from 
+            start to finish.
+          </h2>
+      </div>
+  </section>
   </section>
 </div>
 

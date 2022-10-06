@@ -1,7 +1,7 @@
 <script>
   
   var currentSlide = 1
-  var maxSlide = 2
+  var maxSlide = 3
   var currentTracker = "n" + currentSlide
 
   function scrollSlidesLeft() {
@@ -63,6 +63,7 @@
     <div class="slideTracker">
       <div id="n1" class="tracker tracked"></div>
       <div id="n2" class="tracker"></div>
+      <div id="n3" class="tracker"></div>
     </div>
     <div id="internRight" class="goRight scroll">
       <h1 on:click={scrollSlidesRight}>&RightTriangle;</h1>
@@ -70,7 +71,7 @@
   </div>
   <section id="slidesBoxIntern">
     <section class="slide">
-      <div class="left-text block">
+      <div class="text block">
         <h1>Past Internships</h1>
         <h3>In the past, I have worked with Nuvera Fuel Cells and A Mighty Blaze
           as an intern. Nuvera is a leader in developing fuel cell technology,
@@ -81,24 +82,43 @@
           the YouTube channel that hosts the authors' daily interviews.
         </h3>
       </div>
-      <div class="right-img block">
+      <div class="img block">
         <img src="./src/assets/nuveraAndAMB.png" class="nuvera" alt="Nuvera Fuel Cells Logo" />
       </div>
     </section>
     <section class="slide">
-      <div class="left-text block">
-        <h1>Past Internships</h1>
-        <h3>In the past, I have worked with Nuvera Fuel Cells and A Mighty Blaze
-          as an intern. Nuvera is a leader in developing fuel cell technology,
-          and I worked with them to develop new ideas and create CAD models
-          using Solidworks. A Mighy Blaze is  a company founded in 2020 during 
-          the COVID-19 pandemic in order to help authors, new and old, get 
-          publicity for their work. I was responsible for creating and maintaining
-          the YouTube channel that hosts the authors' daily interviews.
+      <div class="img block">
+        <img src="./src/assets/nuveraPng.png" class="nuvera" alt="Nuvera Fuel Cells Logo" />
+      </div>
+      <div class="text block">
+        <h1>Nuvera</h1>
+        <h3><a href="https://www.nuvera.com/" target="_BLANK">Nuvera Fuel Cells</a> is a Massachusetts-based fuel cell 
+          company, and they are one of the national and international 
+          leaders in developing fuel cells. When I interned for them, 
+          I was learning about the ins-and-outs of fuel cell design 
+          and testing, creating CAD models using Solidworks, and 
+          working on designing and modelling prototypes for new 
+          designs. Unfortunately I can't share any of the models 
+          or ideas, as they all needed to remain on the company servers. 
+          I was with them from September of 2019 until June of 2020.
         </h3>
       </div>
-      <div class="right-img block">
-        <img src="./src/assets/nuveraAndAMB.png" class="nuvera" alt="Nuvera Fuel Cells Logo" />
+    </section>
+    <section class="slide">
+      <div class="text block">
+        <h1>A Mighty Blaze</h1>
+        <h3><a href="https://www.amightyblaze.com/" target="_BLANK">A Mighty Blaze</a> is a company that was created near the 
+          beginning of the COVID-19 pandemic. It is an initiative designed 
+          to help authors gain publicity for their works over the pandemic. They conduct interviews almost 
+          every day with authors, which are livestreamed on their Facebook page 
+          and their <a href="https://www.youtube.com/c/AMightyBlaze" target="_BLANK" >YouTube channel</a>. When I interned with them, I created and maintained 
+          the channel, as well as spent upwards of 60 hours taking 
+          videos from their Facebook archive and uploading them 
+          to the channel. I was with them from March 2020 to September 2020.
+        </h3>
+      </div>
+      <div class="img block">
+        <img src="./src/assets/ambPng.png" class="nuvera" alt="Nuvera Fuel Cells Logo" />
       </div>
     </section>
   </section>
@@ -207,14 +227,23 @@
     padding-left: 5vw;
     padding-right: 5vw;
   }
+  a, a:visited {
+    color: #c86abb;
+    font-weight: bold;
+    transition: all .2s;
+  }
+  a:hover {
+    color: #953788;
+    cursor: pointer;
+  }
   h1 {
     margin-bottom: 0px;
     margin-top: 0px;
   }
-  .left-text {
+  .text {
     width: 50%;
   }
-  .right-img, .right-img img {
+  .img, .img img {
     width: 25vw;
     height: 25vw; 
   }
@@ -237,10 +266,10 @@
       width: 80%;
       font-size: 130%;
     }
-    img, .right-img {
+    img, .img {
       display: none;
     }
-    .left-text {
+    .text {
       width: 100%;
       height: 90%;
       font-size: 140%;
