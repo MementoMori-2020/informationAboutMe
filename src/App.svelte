@@ -68,7 +68,7 @@
         <h2>Ian Blanchet</h2>
         <div class="contact">
           <h5>978-364-6796</h5>
-          <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrlFSprGPRxZxKCrLMxWDZSJLcpFCkDCmNmDDslHZWpVMdjlcmmjbnsZFSqvSxWSqCbwjB">ianblanchet01@gmail.com</a>
+          <h5>ianblanchet01@gmail.com</h5>
         </div>
       </div>
     </div>
