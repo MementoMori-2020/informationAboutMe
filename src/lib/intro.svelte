@@ -83,7 +83,7 @@
                 presentation and writing aptitude. Experience with HTML, CSS,
                 some JavaScript, and the Svelte framework (all of which were used
                 to create this website from scratch). Working towards a BS
-                in Biomedical Engineering.
+                in Biomedical Engineering. This is a test.
             </h2>
         </div>
     </section>
